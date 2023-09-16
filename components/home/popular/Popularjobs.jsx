@@ -7,7 +7,11 @@ import PopularJobCard from '../../../components/common/cards/popular/PopularJobC
 import { useRouter } from "expo-router";
 import { isLoading } from "expo-font";
 import { FlatList } from "react-native-gesture-handler";
+import uuid from 'react-native-uuid'
 import useFetch from '../../../hook/useFetch';
+
+const uniqueId=uuid.v4()
+
 
 const Popularjobs = () => {
   const router = useRouter();
@@ -36,12 +40,18 @@ const Popularjobs = () => {
           data={data}
           renderItem={({item})=>(<PopularJobCard item={item}
           
+          
             
           />)}
           
             
           
-          keyExtractor={item=>item?.job_id
+          // keyExtractor={uniqueId
+          // }
+
+          
+          keyExtractor={item=>item?.numericCode
+          
           }
           contentContainerStyle={{columnGap:SIZES.medium}}
           horizontal
